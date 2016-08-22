@@ -1,9 +1,6 @@
 package com.focus.devframework.http;
 
-import android.util.Log;
-
 import com.focus.devframework.DevApplication;
-import com.focus.devframework.HttpHelper;
 
 import java.util.concurrent.TimeUnit;
 
@@ -23,12 +20,7 @@ public enum OKHttpFactory {
 
     OKHttpFactory() {
         //打印请求Log
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
-            @Override
-            public void log(String message) {
-                Log.d("OKHttp", "OKHttp====message:" + message);
-            }
-        });
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         //缓存目录
