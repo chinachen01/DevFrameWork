@@ -1,5 +1,7 @@
 package com.focus.devframework.service;
 
+import android.database.Observable;
+
 import com.focus.devframework.Model.AlbumModel;
 import com.focus.devframework.Model.ResponseResult;
 import com.focus.devframework.Model.User;
@@ -44,4 +46,7 @@ public interface ApiService {
     @Multipart
     @PUT("rest/upload")
     Call<Object> upload(@PartMap Map<String, RequestBody> params);
+
+    @GET("rest/album/list")
+    Observable<List<AlbumModel>> rxListAlbum();
 }

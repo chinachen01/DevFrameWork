@@ -1,5 +1,6 @@
 package com.focus.devframework;
 
+import android.database.Observable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -41,6 +42,9 @@ public class MainActivity extends AppCompatActivity {
                 sendPostRequest();
                 break;
             case R.id.upload_button:
+
+                break;
+            case R.id.rx_query_button:
 
                 break;
             default:
@@ -104,6 +108,10 @@ public class MainActivity extends AppCompatActivity {
         map.put("size", RequestBody.create(MediaType.parse("text/plain"), String.valueOf(file.length())));
         map.put("type", RequestBody.create(MediaType.parse("text/plain"), mimeType));
         map.put(String.format("file\"; filename=\"%s", file.getName()), new ProgressRequestBody( RequestBody.create(MediaType.parse("text/plain"), mimeType), progressListener));
+    }
+
+    private void rxQuery() {
+        Observable<List<AlbumModel>> observable = RetrofitClient.INSTANCE.getRetrofit().create(ApiService.class).rxListAlbum();
     }
 
 }

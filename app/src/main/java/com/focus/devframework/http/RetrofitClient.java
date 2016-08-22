@@ -3,6 +3,7 @@ package com.focus.devframework.http;
 import com.focus.devframework.utils.NetworkUtil;
 
 import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 
 /**
  * Created by focus on 16/8/19.
@@ -23,6 +24,9 @@ public enum  RetrofitClient {
 
                 //gson转化器
                 .addConverterFactory(GsonConverterFactory.create())
+
+                //Rxandroid
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
 
                 .build();
     }
