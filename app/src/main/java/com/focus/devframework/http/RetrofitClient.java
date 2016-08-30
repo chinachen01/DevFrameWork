@@ -4,11 +4,15 @@ import com.focus.devframework.utils.NetworkUtil;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 
 /**
- * Created by focus on 16/8/19.
+ * the single instance of retrofit.
  */
 public enum  RetrofitClient {
+    /**
+     * single instance.
+     */
     INSTANCE;
     private final Retrofit mRetrofit;
     private static Object mLock = new Object();
@@ -22,8 +26,8 @@ public enum  RetrofitClient {
                 //baseUrl
                 .baseUrl(NetworkUtil.protocol + NetworkUtil.airIp)
 
-                //gson转化器
-                .addConverterFactory(GsonConverterFactory.create())
+                //jackson转化器
+                .addConverterFactory(JacksonConverterFactory.create())
 
                 //Rxandroid
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
